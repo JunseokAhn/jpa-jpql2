@@ -18,6 +18,9 @@
             <!--DB자동생성옵션-->
             <property name="hibernate.hbm2ddl.auto" value="create" />
 
+            <!--배치 사이즈 자동할당-->
+            <property name="hibernate.default_batch_fetch_size" value="100"/>
+
             <!--DB자동생성후 드랍-->
             <!--<property name="hibernate.hbm2ddl.auto" value="create-drop" />-->
 

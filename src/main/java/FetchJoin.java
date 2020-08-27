@@ -65,6 +65,7 @@ public class FetchJoin {
 
         //fetch = EAGER일경우 그냥 조인해도 차이가 없어보인다.
         // 즉, fetch조인은 지연로딩으로 설정된 객체를 쿼리한줄로 즉시로딩으로 받아옴
+        //++추가사항. 즉시로딩은 무한재귀현상이 일어날수있는데 페치조인은 그런게없고 로딩시간이 더 빠르다.
 //        String query4 = "select distinct t from Team t join t.members";
 //        List<Team> resultList4 = EM.createQuery(query4, Team.class).getResultList();
 //        for (Team teamList3 : resultList4) {
