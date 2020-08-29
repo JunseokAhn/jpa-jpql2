@@ -61,6 +61,30 @@ public class SearchExpression {
             }
         }
 
+        //엔티티 자체를 파라미터로 넘기면 하이버네이트가 id값을 자동으로 할당해서 sql을 쏴준다
+        String entityQuery = "select m from Member m where m = :member";
+        Member entityResult = EM.createQuery(entityQuery, Member.class)
+                .setParameter("member", member).getSingleResult();
+        System.out.println(entityResult.getName());
+
+
+        String entityQuery2 = "select m from Member m where m.id = :member";
+        Member entityResult2 = EM.createQuery(entityQuery2, Member.class)
+                .setParameter("member", member.getId()).getSingleResult();
+        System.out.println(entityResult2.getName());
+
+
+        //엔티티 직접할당
+        String entityQuery3 = "select count(m) from Member m";
+        Long entityResult3 = EM.createQuery(entityQuery3, Long.class).getSingleResult();
+        System.out.println(entityResult3);
+
+
+        String entityQuery4 = "select m from Member m where m.team = :team";
+        Member entityResult4 = EM.createQuery(entityQuery4, Member.class)
+                .setParameter("team", team).getSingleResult();
+        System.out.println(entityResult4.getName());
+
         TS.commit();
         EM.close();
         EMF.close();
